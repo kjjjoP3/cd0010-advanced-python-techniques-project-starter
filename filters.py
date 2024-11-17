@@ -1,3 +1,22 @@
+"""Provide filters for querying close approaches and limit the generated results.
+
+The `create_filters` function produces a collection of objects that is used by
+the `query` method to generate a stream of `CloseApproach` objects that match
+all of the desired criteria. The arguments to `create_filters` are provided by
+the main module and originate from the user's command-line options.
+
+This function can be thought to return a collection of instances of subclasses
+of `AttributeFilter` - a 1-argument callable (on a `CloseApproach`) constructed
+from a comparator (from the `operator` module), a reference value, and a class
+method `get` that subclasses can override to fetch an attribute of interest from
+the supplied `CloseApproach`.
+
+The `limit` function simply limits the maximum number of values produced by an
+iterator.
+
+You'll edit this file in Tasks 3a and 3c.
+"""
+
 from operator import eq, ge, le
 import itertools
 
